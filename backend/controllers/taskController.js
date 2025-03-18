@@ -66,3 +66,44 @@ exports.createTask = async (req, res) => {
       res.status(500).json({ message: error.message })
     }
   }
+
+
+  exports.updateTask = async (req, res) => {
+  try {
+    const { projectId, description, startDate, endDate, resources, status } = req.body
+
+    
+    if (!projectId || !description || !startDate || !endDate) {
+      return res.status(400).json({ message: "Tous les champs sont obligatoires" })
+    }
+
+ 
+    const project = await Project.findById(projectId)
+    if (!project) {
+      return res.status(404).json({ message: "Projet non trouvé" })
+    }
+
+    const updatedTask = await Task.findByIdAndUpdate(
+      req.params.id,
+      {
+        projectId,
+        description,
+        startDate,
+        endDate,
+        resources,
+        status,
+        updatedAt: Date.now(),
+      },
+      { new: true },
+    )
+
+    if (!updatedTask) {
+      return res.status(404).json({ message: "Tâche non trouvée" })
+    }
+
+    res.status(200).json(updatedTask)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
