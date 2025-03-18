@@ -21,3 +21,48 @@ exports.getAllTasks = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+
+exports.getTaskById = async(req , res )=>{
+    try{
+        const task = await Task.findById(req.params.id)
+        .populate("projectId" ,"name")
+        .populate("resources.resourceId" , "name")
+
+        if(!task){
+            return res.status(404).json({msg : "Tache non trouvee"})
+        }
+        res.status(201).json(task)
+    }catch(error){
+        res.status(500).json({msg : error.message})
+    }
+}
+
+exports.createTask = async (req, res) => {
+    try {
+      const { projectId, description, startDate, endDate, resources, status } = req.body
+  
+     
+      if (!projectId || !description || !startDate || !endDate) {
+        return res.status(400).json({ message: "Tous les champs sont obligatoires" })
+      }
+  
+      const project = await Project.findById(projectId)
+      if (!project) {
+        return res.status(404).json({ message: "Projet non trouvé" })
+      }
+  
+      const newTask = new Task({
+        projectId,
+        description,
+        startDate,
+        endDate,
+        resources: resources || [],
+        status: status || "À faire",
+      })
+  
+      const savedTask = await newTask.save()
+      res.status(201).json(savedTask)
+    } catch (error) {
+      res.status(500).json({ message: error.message })
+    }
+  }
