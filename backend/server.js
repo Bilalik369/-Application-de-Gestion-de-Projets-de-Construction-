@@ -15,6 +15,7 @@ const authRoutes = require("./routes/authRoutes")
 
 const { authenticateToken } = require("./middleware/authMiddleware")
 
+
 dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -30,12 +31,12 @@ mongoose
   .catch((err) => console.error("Erreur de connexion à MongoDB:", err))
 
 
-app.use("/api/auth", authRoutes)
-app.use("/api/projects", authenticateToken, projectRoutes)
-app.use("/api/tasks", authenticateToken, taskRoutes)
-app.use("/api/resources", authenticateToken, resourceRoutes)
-app.use("/api/suppliers", authenticateToken, supplierRoutes)
-
+  app.use("/api/auth", authRoutes)
+  app.use("/api/projects", authenticateToken, projectRoutes)
+  app.use("/api/tasks", authenticateToken, taskRoutes)
+  app.use("/api/resources", authenticateToken, resourceRoutes)
+  app.use("/api/suppliers", authenticateToken, supplierRoutes)
+  
 
 app.get("/", (req, res) => {
   res.send("API ConstructionXpert Services")
