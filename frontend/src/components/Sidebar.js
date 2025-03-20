@@ -1,7 +1,9 @@
+"use client"
+
 import { NavLink } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 
-
+// Icônes SVG pour le sidebar
 const DashboardIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -106,4 +108,76 @@ const LogoutIcon = () => (
     <line x1="21" y1="12" x2="9" y2="12"></line>
   </svg>
 )
+
+const Sidebar = ({ isOpen, toggleSidebar }) => {
+  const { logout } = useAuth()
+
+  const handleLogout = () => {
+    logout()
+  }
+
+  return (
+    <div className={`sidebar ${isOpen ? "open" : ""}`}>
+      <div className="sidebar-header">
+        <div className="sidebar-logo">ConstructionIken</div>
+      </div>
+
+      <nav className="sidebar-nav">
+        <NavLink
+          to="/"
+          className={({ isActive }) => `sidebar-nav-item ${isActive ? "active" : ""}`}
+          onClick={() => toggleSidebar(false)}
+        >
+          <DashboardIcon />
+          <span>Tableau de bord</span>
+        </NavLink>
+
+        <NavLink
+          to="/projects"
+          className={({ isActive }) => `sidebar-nav-item ${isActive ? "active" : ""}`}
+          onClick={() => toggleSidebar(false)}
+        >
+          <ProjectsIcon />
+          <span>Projets</span>
+        </NavLink>
+
+        <NavLink
+          to="/tasks"
+          className={({ isActive }) => `sidebar-nav-item ${isActive ? "active" : ""}`}
+          onClick={() => toggleSidebar(false)}
+        >
+          <TasksIcon />
+          <span>Tâches</span>
+        </NavLink>
+
+        <NavLink
+          to="/resources"
+          className={({ isActive }) => `sidebar-nav-item ${isActive ? "active" : ""}`}
+          onClick={() => toggleSidebar(false)}
+        >
+          <ResourcesIcon />
+          <span>Ressources</span>
+        </NavLink>
+
+        <NavLink
+          to="/suppliers"
+          className={({ isActive }) => `sidebar-nav-item ${isActive ? "active" : ""}`}
+          onClick={() => toggleSidebar(false)}
+        >
+          <SuppliersIcon />
+          <span>Fournisseurs</span>
+        </NavLink>
+      </nav>
+
+      <div className="sidebar-footer">
+        <button className="sidebar-nav-item" onClick={handleLogout}>
+          <LogoutIcon />
+          <span>Déconnexion</span>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default Sidebar
 
