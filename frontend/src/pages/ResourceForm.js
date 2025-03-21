@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import Layout from "../components/Layout"
