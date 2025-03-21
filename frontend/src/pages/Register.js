@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
@@ -10,7 +10,7 @@ function Register() {
     email: "",
     password: "",
     confirmPassword: "",
-    role: "user", // Par défaut, le rôle est "user"
+    role: "user", 
   })
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -26,7 +26,7 @@ function Register() {
     setError("")
     setLoading(true)
 
-    // Vérification des mots de passe
+    
     if (formData.password !== formData.confirmPassword) {
       setError("Les mots de passe ne correspondent pas")
       setLoading(false)
@@ -34,7 +34,7 @@ function Register() {
     }
 
     try {
-      // Appel à l'API pour créer un compte
+      
       const response = await api.post("/auth/register", {
         username: formData.username,
         email: formData.email,
@@ -43,7 +43,7 @@ function Register() {
       })
 
       if (response.status === 201) {
-        // Redirection vers la page de connexion après inscription réussie
+        
         navigate("/login", {
           state: { message: "Compte créé avec succès. Veuillez vous connecter." },
         })
