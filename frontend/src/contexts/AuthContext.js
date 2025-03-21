@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
 
       const { token, user } = response.data
 
-      
+     
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
 
@@ -48,11 +48,11 @@ export function AuthProvider({ children }) {
   }
 
   const logout = () => {
-   
+    
     localStorage.removeItem("token")
     localStorage.removeItem("user")
 
-    
+   
     delete api.defaults.headers.common["Authorization"]
 
     setUser(null)

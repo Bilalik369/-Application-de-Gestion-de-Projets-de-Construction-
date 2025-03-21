@@ -1,9 +1,8 @@
-"use client"
 
 import { NavLink } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 
-// Icônes SVG pour le sidebar
+
 const DashboardIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +108,7 @@ const LogoutIcon = () => (
   </svg>
 )
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
+function Sidebar({ isOpen, toggleSidebar }) {
   const { logout } = useAuth()
 
   const handleLogout = () => {
@@ -119,7 +118,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
       <div className="sidebar-header">
-        <div className="sidebar-logo">ConstructionIken</div>
+        <div className="sidebar-logo">ConstructionXpert</div>
       </div>
 
       <nav className="sidebar-nav">
