@@ -186,7 +186,7 @@ const ProjectForm = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="form-group">
                 <label htmlFor="budget" className="form-label">
-                  Budget (€)
+                  Budget (DH)
                 </label>
                 <input
                   type="number"

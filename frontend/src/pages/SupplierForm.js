@@ -178,7 +178,7 @@ const SupplierForm = () => {
                   className="form-input"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="01 23 45 67 89"
+                  placeholder="+212 6 05 22 87 49"
                   required
                 />
               </div>
