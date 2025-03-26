@@ -13,7 +13,7 @@ const projectSchema = new mongoose.Schema({
   },
   startDate: {
     type: Date,
-    required: true,
+    required: [true,""]
   },
   endDate: {
     type: Date,

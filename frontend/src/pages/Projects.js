@@ -25,16 +25,16 @@ function Projects() {
     fetchProjects()
   }, [])
 
-  const handleDelete = async (id) => {
-    if (window.confirm("Êtes-vous sûr de vouloir supprimer ce projet ?")) {
-      try {
-        await projectService.delete(id)
-        setProjects(projects.filter((project) => project._id !== id))
-      } catch (err) {
-        console.error("Erreur lors de la suppression du projet:", err)
+    const handleDelete = async (id) => {
+        if (window.confirm("Êtes-vous sûr de vouloir supprimer ce projet ?")) {
+          try {
+          await projectService.delete(id)
+          setProjects(projects.filter((project) => project._id !== id))
+        } catch (err) {
+          console.error("Erreur lors de la suppression du projet:", err)
+        }
       }
     }
-  }
 
   const filteredProjects = projects.filter(
     (project) =>
@@ -143,7 +143,7 @@ function Projects() {
                           {new Date(project.startDate).toLocaleDateString()} -{" "}
                           {new Date(project.endDate).toLocaleDateString()}
                         </td>
-                        <td className="hidden sm:table-cell text-muted">{project.budget.toLocaleString()} €</td>
+                        <td className="hidden sm:table-cell text-muted">{project.budget.toLocaleString()} dh</td>
                         <td>
                           <span className={getStatusBadgeClass(project.status)}>{project.status}</span>
                         </td>

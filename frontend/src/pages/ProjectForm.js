@@ -45,7 +45,7 @@ const ProjectForm = () => {
       }
     }
 
-    fetchProject()
+    fetchProject() 
   }, [id, isEditMode])
 
   const handleChange = (e) => {

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate, Link, useLocation } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 
+
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -46,10 +47,15 @@ function Login() {
   }
 
   return (
-    <div className="login-container">
+    
+    <div className="login-container ">
+      <div className="login-image ">
+            <img src="asset/ggg.png" alt="Login Illustration" />
+            </div>
       <div className="card login-card">
         <div className="card-header">
           <div className="login-logo">
+            
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="48"

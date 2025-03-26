@@ -20,6 +20,9 @@ exports.getProjectById = async (req, res) => {
       return res.status(404).json({ message: "Projet non trouvé" })
     }
 
+    const task =  await Task.find({projectId : project.id})
+    project.count =  task.length;
+
     res.status(200).json(project)
   } catch (error) {
     res.status(500).json({ message: error.message })

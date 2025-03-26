@@ -609,3 +609,24 @@ a:hover {
     z-index: 1001;
   }
 }
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 40px;
+
+  
+}
+
+.login-image img {
+  max-width: 100%;
+  height: 400px;
+  display: flex;
+  align-items:  center;
+  justify-content: center;
+}
+
+.login-card {
+  width: 400px; 
+}
